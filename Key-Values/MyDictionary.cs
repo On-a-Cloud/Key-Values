@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace KeyValues
 {
-    class MyDictionary
+    class MyDictionary<T>
     {
-        public KeyValue[] keyValueArr = new KeyValue[50];
+        public KeyValue<T>[] keyValueArr = new KeyValue<T>[50];
         int counter = -1;
-
-        public Object this[string key]
+        public T this[string key]
         {
             get
             {
@@ -31,13 +30,13 @@ namespace KeyValues
                 {
                     if (key == keyValueArr[i].key)
                     {
-                        keyValueArr[i] = new KeyValue(key, keyValueArr[i].value);
+                        keyValueArr[i] = new KeyValue<T>(key, keyValueArr[i].value);
                         replace = true;
                     }
                 }
                 if (replace == false)
                 {
-                    keyValueArr[counter + 1] = new KeyValue(key, value);
+                    keyValueArr[counter + 1] = new KeyValue<T>(key, value);
                 }
                 counter++;
             }
